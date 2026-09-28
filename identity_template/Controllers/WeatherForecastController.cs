@@ -1,3 +1,4 @@
+using identity_template.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace identity_template.Controllers
