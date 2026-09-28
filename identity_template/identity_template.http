@@ -1,0 +1,6 @@
+@identity_template_HostAddress = http://localhost:5251
+
+GET {{identity_template_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
