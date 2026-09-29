@@ -4,3 +4,8 @@ GET {{identity_template_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
+POST {{identity_template_HostAddress}}/api/auth/register-user/
+Accept: application/json
+{"username":"victorjayce",
+"email":"nicko@gmail.com",
+"password":"123...890"}
