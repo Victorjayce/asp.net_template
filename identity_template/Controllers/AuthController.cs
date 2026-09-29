@@ -15,7 +15,7 @@ namespace identity_template.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    //[Authorize] - not needed here as user doesn't have token yet
     public class AuthController : ControllerBase
     {
         private readonly UserManager<Users> _userManager;

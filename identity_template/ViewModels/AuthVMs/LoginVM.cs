@@ -3,8 +3,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace identity_template.ViewModels.AuthVMs
 {
-    public record LoginVM(
-        [property: Required(ErrorMessage = "Email is required."), EmailAddress(ErrorMessage = "Invalid email address.")] string Email,
-        [property: Required(ErrorMessage = "Password is required.")] string Password
-    );
+    public class LoginVM
+    {
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
+        [Required]
+        [MinLength(8)]
+        public string Password { get; set; }
+    }
 }
