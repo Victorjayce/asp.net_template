@@ -10,6 +10,7 @@ namespace identity_template.Data
         }
         // Define your DbSets here...for now the default WeatherForecast
         DbSet<WeatherForecast> WeatherForecasts { get; set; }
-        DbSet<Users> Users { get; set; }
+        public DbSet<Users> Users { get; set; }
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
     }
 }
