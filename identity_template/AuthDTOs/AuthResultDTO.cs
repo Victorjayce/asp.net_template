@@ -1,6 +1,6 @@
-﻿namespace identity_template.ViewModels.AuthVMs
+﻿namespace identity_template.AuthDTOs
 {
-    public class AuthenticationResultVM
+    public class AuthResultDTO
     {
         public string Token { get; set; }
         public string RefreshToken { get; set; }

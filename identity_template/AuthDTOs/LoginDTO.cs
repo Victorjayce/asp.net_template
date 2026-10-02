@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
 
-namespace identity_template.ViewModels.AuthVMs
+namespace identity_template.AuthDTOs
 {
-    public class LoginVM
+    public class LoginDTO
     {
         [Required]
         [EmailAddress]

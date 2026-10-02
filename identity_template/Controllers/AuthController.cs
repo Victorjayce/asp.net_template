@@ -1,7 +1,7 @@
-﻿using identity_template.Data;
+﻿using identity_template.AuthDTOs;
+using identity_template.Data;
 using identity_template.Models;
 using identity_template.ViewModels;
-using identity_template.ViewModels.AuthVMs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -33,7 +33,7 @@ namespace identity_template.Controllers
         }
 
         [HttpPost("register-user")]
-        public async Task<IActionResult> Register([FromBody] RegisterVM payload)
+        public async Task<IActionResult> Register([FromBody] RegisterDTO payload)
         {
             var userExists = await _userManager.FindByEmailAsync(payload.Email);
             if(userExists != null) return BadRequest("user already exists");
@@ -50,7 +50,7 @@ namespace identity_template.Controllers
             return Created(nameof(Register), "user created successfully");
         }
 
-        public async Task<IActionResult> Login([FromBody] LoginVM payload)
+        public async Task<IActionResult> Login([FromBody] LoginDTO payload)
         {
             if(!ModelState.IsValid) return BadRequest("provide all required details");
 
@@ -63,7 +63,7 @@ namespace identity_template.Controllers
             return Unauthorized();
         }
 
-        public async Task<IActionResult> RefreshToken([FromBody] TokenRequestVM payload)
+        public async Task<IActionResult> RefreshToken([FromBody] TokenRequestDTO payload)
         {
             if (!ModelState.IsValid) return BadRequest("provide all required details");
             try
@@ -78,7 +78,7 @@ namespace identity_template.Controllers
             }
         }
 
-        private async Task<AuthenticationResultVM> GenerateJwtToken(Users user, string? refreshToken = null)
+        private async Task<AuthResultDTO> GenerateJwtToken(Users user, string? refreshToken = null)
         {
             var authclaims = new List<Claim>
             {
@@ -122,7 +122,7 @@ namespace identity_template.Controllers
             }
             await _context.RefreshTokens.AddAsync(dbRefreshToken);
             await _context.SaveChangesAsync();
-            var response = new AuthenticationResultVM
+            var response = new AuthResultDTO
             {
                 Token = jwtToken,
                 RefreshToken = dbRefreshToken.Token,
@@ -131,7 +131,7 @@ namespace identity_template.Controllers
             return response;
         }
         
-        private async Task<AuthenticationResultVM> VerifyAndGenerateToken(TokenRequestVM payload)
+        private async Task<AuthResultDTO> VerifyAndGenerateToken(TokenRequestDTO payload)
         {
             try
             {

@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace identity_template.ViewModels.AuthVMs
+namespace identity_template.AuthDTOs
 {
-    public class RegisterVM
+    public class RegisterDTO
     {
         [Required(ErrorMessage = "Username is required.")]
         public string UserName { get; set; }
