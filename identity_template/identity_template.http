@@ -10,3 +10,22 @@ Content-Type: application/json
 {"username":"victorjayce",
 "email":"nicko@gmail.com",
 "password":"Abc...890"}
+
+###
+POST {{identity_template_HostAddress}}/api/auth/login
+Accept: application/json
+Content-Type: application/json
+{"email":"nicko@gmail.com",
+"password":"Abc...890"}
+
+###
+POST {{identity_template_HostAddress}}/api/auth/refresh
+Accept: application/json
+Content-Type: application/json
+{"token":"<PASTE_EXPIRED_JWT_HERE>",
+"refreshToken":"<PASTE_REFRESH_TOKEN_HERE>"}
+
+###
+GET {{identity_template_HostAddress}}/api/secure-endpoint
+Accept: application/json
+Authorization: Bearer {{ACCESS_TOKEN}}
