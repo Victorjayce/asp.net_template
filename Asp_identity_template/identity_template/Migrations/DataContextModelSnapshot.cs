@@ -113,28 +113,6 @@ namespace identity_template.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("identity_template.Models.WeatherForecast", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateOnly>("Date")
-                        .HasColumnType("date");
-
-                    b.Property<string>("Summary")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TemperatureC")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("WeatherForecasts");
-                });
-
             modelBuilder.Entity("identity_template.Models.RefreshToken", b =>
                 {
                     b.HasOne("identity_template.Models.Users", "users")

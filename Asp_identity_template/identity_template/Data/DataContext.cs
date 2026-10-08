@@ -8,8 +8,7 @@ namespace identity_template.Data
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
         }
-        // Define your DbSets here...for now the default WeatherForecast
-        DbSet<WeatherForecast> WeatherForecasts { get; set; }
+        // Define your DbSets here...
         public DbSet<Users> Users { get; set; }
         public DbSet<RefreshToken> RefreshTokens { get; set; }
     }
